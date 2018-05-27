@@ -2,19 +2,18 @@ package Trabalho_2018;
 
 public class MaxHeap
 {
-    private float[] Heap;
+	
+    private Atendimento[] Heap;
     private int size;
     private int maxsize;
-    private Atendimento atendimento = new Atendimento();
- 
+
     private static final int FRONT = 1;
  
     public MaxHeap(int maxsize)
     {
         this.maxsize = maxsize;
         this.size = 0;
-        Heap = new float[this.maxsize + 1];
-        Heap[0] = Integer.MAX_VALUE;
+        Heap = new Atendimento[this.maxsize + 1];
     }
  
     private int parent(int pos)
@@ -43,7 +42,7 @@ public class MaxHeap
  
     private void swap(int fpos,int spos)
     {
-        float tmp;
+        Atendimento tmp;
         tmp = Heap[fpos];
         Heap[fpos] = Heap[spos];
         Heap[spos] = tmp;
@@ -53,9 +52,9 @@ public class MaxHeap
     {
         if (!isLeaf(pos))
         { 
-            if ( Heap[pos] < Heap[leftChild(pos)]  || Heap[pos] < Heap[rightChild(pos)])
+            if ( Heap[pos].getPrioridadeCliente() < Heap[leftChild(pos)].getPrioridadeCliente()   || Heap[pos].getPrioridadeCliente()  < Heap[rightChild(pos)].getPrioridadeCliente() )
             {
-                if (Heap[leftChild(pos)] > Heap[rightChild(pos)])
+                if (Heap[leftChild(pos)].getPrioridadeCliente()  > Heap[rightChild(pos)].getPrioridadeCliente() )
                 {
                     swap(pos, leftChild(pos));
                     maxHeapify(leftChild(pos));
@@ -70,10 +69,9 @@ public class MaxHeap
  
     public void insert(float f, Atendimento atendimento)
     {
-        Heap[++size] = f;
+        Heap[++size] = atendimento;
         int current = size;
-        this.atendimento = atendimento;
-        while(Heap[current] > Heap[parent(current)])
+        while(Heap[parent(current)] != null && (Heap[current].getPrioridadeCliente()  > Heap[parent(current)].getPrioridadeCliente()) )
         {
             swap(current,parent(current));
             current = parent(current);
@@ -98,9 +96,9 @@ public class MaxHeap
         }
     }
  
-    public float remove()
+    public Atendimento remove()
     {
-        float popped = Heap[FRONT];
+        Atendimento popped = Heap[FRONT];
         Heap[FRONT] = Heap[size--]; 
         maxHeapify(FRONT);
         return popped;

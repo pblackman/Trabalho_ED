@@ -53,7 +53,8 @@ public class main_trabalho {
         maxHeapAtendimento.maxHeap();
  
         maxHeapAtendimento.print();
-        System.out.println("o proximo cliente a ser atendido é " + maxHeapAtendimento.remove());
+        Atendimento proximo = maxHeapAtendimento.remove();
+        System.out.println("o proximo cliente a ser atendido é nome: " + proximo.getCliente().getNome() + ", cpf: " + proximo.getCliente().getCpf());
 	}
 }
 

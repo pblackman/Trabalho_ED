@@ -18,6 +18,10 @@ public class Atendimento {
 	private float prioridadeCliente;
 	private int urgencia;
 	
+	public Cliente getCliente() {
+		return this.cliente;
+	}
+	
 	public void recepcionar(Cliente cliente, ListaEstaticaDeAssuntos ListaAssuntos, SimpleDateFormat horaChegada){
 		this.cliente = cliente;
 		this.listaAssuntos = ListaAssuntos;
