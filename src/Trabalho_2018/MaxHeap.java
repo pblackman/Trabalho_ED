@@ -3,17 +3,37 @@ package Trabalho_2018;
 public class MaxHeap
 {
 	
-    private Atendimento[] Heap;
+    private HeapItem[] Heap;
     private int size;
     private int maxsize;
 
     private static final int FRONT = 1;
  
+    public class HeapItem {
+    	private float prioridade;
+    	private Object item;
+    	
+    	public HeapItem(float prioridade, Object item) {
+    		this.prioridade = prioridade;
+    		this.item = item;
+    	}
+    	public void setPrioridade(float prioridade) {
+    		this.prioridade = prioridade;
+    	}
+    	public float getPrioridade() {
+    		return this.prioridade;
+    	}
+    	
+    	public Object getItem() {
+    		return this.item;
+    	}
+    }
+    
     public MaxHeap(int maxsize)
     {
         this.maxsize = maxsize;
         this.size = 0;
-        Heap = new Atendimento[this.maxsize + 1];
+        Heap = new HeapItem[this.maxsize + 1];
     }
  
     private int parent(int pos)
@@ -42,7 +62,7 @@ public class MaxHeap
  
     private void swap(int fpos,int spos)
     {
-        Atendimento tmp;
+    	HeapItem tmp;
         tmp = Heap[fpos];
         Heap[fpos] = Heap[spos];
         Heap[spos] = tmp;
@@ -52,9 +72,9 @@ public class MaxHeap
     {
         if (!isLeaf(pos))
         { 
-            if ( Heap[pos].getPrioridadeCliente() < Heap[leftChild(pos)].getPrioridadeCliente()   || Heap[pos].getPrioridadeCliente()  < Heap[rightChild(pos)].getPrioridadeCliente() )
+            if ( Heap[leftChild(pos)]!= null && Heap[pos].getPrioridade() < Heap[leftChild(pos)].getPrioridade()   || Heap[rightChild(pos)] != null && Heap[pos].getPrioridade()  < Heap[rightChild(pos)].getPrioridade() )
             {
-                if (Heap[leftChild(pos)].getPrioridadeCliente()  > Heap[rightChild(pos)].getPrioridadeCliente() )
+                if (Heap[leftChild(pos)].getPrioridade()  > Heap[rightChild(pos)].getPrioridade() )
                 {
                     swap(pos, leftChild(pos));
                     maxHeapify(leftChild(pos));
@@ -67,11 +87,12 @@ public class MaxHeap
         }
     }
  
-    public void insert(float f, Atendimento atendimento)
+    public void insert(float f, Object objeto)
     {
-        Heap[++size] = atendimento;
+    	HeapItem item = new HeapItem(f, objeto);
+        Heap[++size] = item;
         int current = size;
-        while(Heap[parent(current)] != null && (Heap[current].getPrioridadeCliente()  > Heap[parent(current)].getPrioridadeCliente()) )
+        while(Heap[parent(current)] != null && (Heap[current].getPrioridade()  > Heap[parent(current)].getPrioridade()) )
         {
             swap(current,parent(current));
             current = parent(current);
@@ -96,9 +117,9 @@ public class MaxHeap
         }
     }
  
-    public Atendimento remove()
+    public HeapItem remove()
     {
-        Atendimento popped = Heap[FRONT];
+        HeapItem popped = Heap[FRONT];
         Heap[FRONT] = Heap[size--]; 
         maxHeapify(FRONT);
         return popped;

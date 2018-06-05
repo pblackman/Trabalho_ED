@@ -1,61 +1,52 @@
 package Trabalho_2018;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class Atendimento {
 
 	private Cliente cliente;
-	private ListaEstaticaDeAssuntos listaAssuntos = null;
-	private SimpleDateFormat horaChegada;
-	private SimpleDateFormat horaAtendimento;
+	private Assuntos assuntosTratados;
+	private Date timestampChegada;
+	private Date timestampAtendimento;
+	private Date timestampEncerramento;
+	private float prioridade;
+	private int numAssuntos;
 	
-	private int i=0;
-	private int tamanho;
-	private int idade;
-	private float tempoEspera;
-	private float prioridadeCliente;
-	private int urgencia;
+	public Atendimento(Cliente cliente) {
+		this.assuntosTratados = new Assuntos(10);
+		this.cliente = cliente;
+	}
 	
+	public float getPrioridade() {
+		Date timestamp = new Date();
+		long espera = (timestamp.getTime() - this.timestampChegada.getTime())/(1000*60);
+     	return (float) ((this.cliente.getIdade()/65.0 + espera/15.0 + assuntosTratados.getUrgenciaMedia()/10.0)/3.0);
+	}
+
 	public Cliente getCliente() {
 		return this.cliente;
 	}
 	
-	public void recepcionar(Cliente cliente, ListaEstaticaDeAssuntos ListaAssuntos, SimpleDateFormat horaChegada){
-		this.cliente = cliente;
-		this.listaAssuntos = ListaAssuntos;
-		this.horaChegada = horaChegada;
+	public void IncluirAssunto(TipoAssunto tipo, String descricao){
+	    Assunto assunto = new Assunto(tipo, descricao);
+		this.assuntosTratados.Inserir(assunto);
+	}
+
+	public void setTimestampChegada() {
+		this.timestampChegada = new Date();
 	}
 	
-	public ListaEstaticaDeAssuntos atender(int idade, float tempoEspera, int urgencia){
-		// o tempo de espera desta formula precisa ser refeito pegando a hora do sistema e diminuindo da hora de chegada
-		// tem que implementar o metodo getAssuntoMaisUrgente na classe listaestaticadeassunto
-		this.setPrioridadeCliente(((this.cliente.getIdade()/65)+(tempoEspera/15)+(this.listaAssuntos.getAssuntoMaisUrgente()/10))/3);
-	    return this.listaAssuntos;
-	
+	public void setTimestampEncerramento() {
+		this.timestampEncerramento = new Date();
 	}
 	
-	public void encerrar(){
-		
+	public void setTimestampAtendimento() {
+		this.timestampAtendimento = new Date();
 	}
 	
-	public Date gerarEstatistica(){
+	public Date GerarEstatistica(){
 		return null;
 	
 	}
-
-	public float getPrioridadeCliente() {
-		// o tempo de espera desta formula precisa ser refeito pegando a hora do sistema e diminuindo da hora de chegada
-		// tem que implementar o metodo getAssuntoMaisUrgente na classe listaestaticadeassunto
-		int assuntoMaisUrgente = 10; //this.listaAssuntos.getAssuntoMaisUrgente()
-		this.prioridadeCliente = ((this.cliente.getIdade()/65)+(this.tempoEspera/15)+(assuntoMaisUrgente/10))/3;
-		return prioridadeCliente;
-	}
-
-	public void setPrioridadeCliente(float prioridadeCliente) {
-		this.prioridadeCliente = prioridadeCliente;
-	}
-
-	
 }
