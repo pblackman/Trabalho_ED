@@ -1,4 +1,4 @@
-package Trabalho_2018;
+package trabalho_ed;
 import java.nio.ByteBuffer;
 
 public class TipoAssunto extends ObjetoBase {
@@ -7,7 +7,7 @@ public class TipoAssunto extends ObjetoBase {
 	private String titulo;
 	private int urgencia;
 	private int totalAtendimentos;
-	private int totalMinutosAtendimento;
+	private long totalMinutosAtendimento;
 	
 	public TipoAssunto(String tipo, String titulo, int urgencia)
 	{
@@ -23,7 +23,7 @@ public class TipoAssunto extends ObjetoBase {
     }
     
     public String titulo() {
-        return this.tipo;
+        return this.titulo;
     }
     
     public String getChave() {
@@ -31,7 +31,7 @@ public class TipoAssunto extends ObjetoBase {
     }
     
     public TipoAssunto getConteudo() {
-        return this;
+        return this;                 
     }
     
     public String getTitulo() {
@@ -43,11 +43,19 @@ public class TipoAssunto extends ObjetoBase {
 	}
 	
 
-	public int getTotalMinutosAtendimento() {
+	public long getTotalMinutosAtendimento() {
 		return this.totalMinutosAtendimento;
 	}
 	
 	public int getTotalAtendimentos() {
 		return this.totalAtendimentos;
+	}
+	
+	public void setTotalMinutosAtendimento(long minutos) {
+		this.totalMinutosAtendimento = this.totalMinutosAtendimento + minutos;
+	}
+	
+	public void setTotalAtendimentos() {
+		this.totalAtendimentos++;
 	}
 }

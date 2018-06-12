@@ -1,4 +1,4 @@
-package Trabalho_2018;
+package trabalho_ed;
 
 public class main_trabalho {
 
@@ -27,8 +27,49 @@ public class main_trabalho {
 	    Atendimentos.Recepcionar(atendimentoCliente3);
 	    
 	    Atendimento proximoAtendimento = Atendimentos.Atender();
-	    Atendimento proximoAtendimento2 = Atendimentos.Atender();
-	    Atendimento proximoAtendimento3 = Atendimentos.Atender();
+		Assuntos assuntos = proximoAtendimento.getAssuntosTratados(); // conjunto de assuntos do atendimento
+		for ( int i = 0; i < assuntos.indice; i++ ){
+        	Assunto ass = (Assunto)assuntos.lista[i];
+			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getChave());
+			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getTitulo());
+			ass.setTimestampAtendimentoAssunto(); // inicio do atendimento do assunto
+			System.out.println("   ---> Data de início do atendimento do assunto: " + ass.getTimestampAtendimentoAssunto());
+			ass.setTimestampEncerramentoAssunto(); // fim do atendimento do assunto
+			System.out.println("   ---> Data do fim    do atendimento do assunto: " + ass.getTimestampEncerramentoAssunto());
+			// atualizando variaveis para estatisticas do tipo de assunto
+			ass.getTipoAssunto().setTotalAtendimentos();
+			ass.getTipoAssunto().setTotalMinutosAtendimento(ass.getTimestampEncerramentoAssunto()-ass.getTimestampAtendimentoAssunto());
+		}
+
+		Atendimento proximoAtendimento2 = Atendimentos.Atender();
+		assuntos = proximoAtendimento.getAssuntosTratados(); // conjunto de assuntos do atendimento
+		for ( int i = 0; i < assuntos.indice; i++ ){
+        	Assunto ass = (Assunto)assuntos.lista[i];
+			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getChave());
+			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getTitulo());
+			ass.setTimestampAtendimentoAssunto(); // inicio do atendimento do assunto
+			System.out.println("   ---> Data de início do atendimento do assunto: " + ass.getTimestampAtendimentoAssunto());
+			ass.setTimestampEncerramentoAssunto(); // fim do atendimento do assunto
+			System.out.println("   ---> Data do fim    do atendimento do assunto: " + ass.getTimestampEncerramentoAssunto());
+			// atualizando variaveis para estatisticas do tipo de assunto
+			ass.getTipoAssunto().setTotalAtendimentos();
+			ass.getTipoAssunto().setTotalMinutosAtendimento(ass.getTimestampEncerramentoAssunto()-ass.getTimestampAtendimentoAssunto());
+		}
+
+		Atendimento proximoAtendimento3 = Atendimentos.Atender();
+		assuntos = proximoAtendimento.getAssuntosTratados(); // conjunto de assuntos do atendimento
+		for ( int i = 0; i < assuntos.indice; i++ ){
+        	Assunto ass = (Assunto)assuntos.lista[i];
+			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getChave());
+			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getTitulo());
+			ass.setTimestampAtendimentoAssunto(); // inicio do atendimento do assunto
+			System.out.println("   ---> Data de início do atendimento do assunto: " + ass.getTimestampAtendimentoAssunto());
+			ass.setTimestampEncerramentoAssunto(); // fim do atendimento do assunto
+			System.out.println("   ---> Data do fim    do atendimento do assunto: " + ass.getTimestampEncerramentoAssunto());
+			// atualizando variaveis para estatisticas do tipo de assunto
+			ass.getTipoAssunto().setTotalAtendimentos();
+			ass.getTipoAssunto().setTotalMinutosAtendimento(ass.getTimestampEncerramentoAssunto()-ass.getTimestampAtendimentoAssunto());
+		}
 	    
 	    
 	}

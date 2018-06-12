@@ -1,7 +1,8 @@
-package Trabalho_2018;
+package trabalho_ed;
 
 public class Atendimentos extends MaxHeap {
 	TiposAssuntos tiposAssuntos;
+	
 	public Atendimentos(int maxsize) {
 		super(maxsize);
 		tiposAssuntos = new TiposAssuntos(System.getProperty("user.dir") + "\\data\\TipoAssunto.txt");
@@ -23,12 +24,11 @@ public class Atendimentos extends MaxHeap {
 		atendimento.setTimestampAtendimento();
 		System.out.println("Próximo cliente-> Nome: " + atendimento.getCliente().getNome() + ", idade: "  + atendimento.getCliente().getIdade());
 		return atendimento;
-		
 	}
 	
 	public void GerarEstatisticas() {
-		
-		
+	// listar todos os tipos de assuntos e a media de tempo de atendimento
+	// media = tipoassunto.gettotalMinutosAtendimento / tipoassunto.gettotalAtendimentos
+				
 	}
-
 }
