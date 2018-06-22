@@ -1,6 +1,5 @@
 package trabalho_ed;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Estatisticas extends HashTable{
