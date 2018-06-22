@@ -1,4 +1,4 @@
-package Trabalho_2018;
+package trabalho_ed;
 import java.nio.ByteBuffer;
 public class HashTable {
 	ListaEstatica lista;

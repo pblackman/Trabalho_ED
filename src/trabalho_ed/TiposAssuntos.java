@@ -1,4 +1,4 @@
-package Trabalho_2018;
+package trabalho_ed;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

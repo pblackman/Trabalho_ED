@@ -31,7 +31,7 @@ public class Atendimentos extends MaxHeap {
 	public Atendimento Atender() {
 		Atendimento atendimento = (Atendimento)this.remover().getItem();
 		atendimento.setTimestampAtendimento();
-		System.out.println("Prï¿½ximo cliente-> Nome: " + atendimento.getCliente().getNome() + ", idade: "  + atendimento.getCliente().getIdade());
+		System.out.println("Próximo cliente-> Nome: " + atendimento.getCliente().getNome() + ", idade: "  + atendimento.getCliente().getIdade());
 		return atendimento;
 	}
 	
@@ -41,7 +41,7 @@ public class Atendimentos extends MaxHeap {
 				"', idade: " + atendimento.getCliente().getIdade() + ", prioridade: " + atendimento.getPrioridade());
 	    for(int i = 0; i< atendimento.getAssuntosTratados().getTamanho(); i++) {
 	    	Assunto a = (Assunto)atendimento.getAssuntosTratados().get(i);
-	    	System.out.println("Descriï¿½ï¿½o Assunto " + i + ": " + a.getDescricao() + ", Providï¿½ncia:" + a.getProvidencias());
+	    	System.out.println("Descrição Assunto " + i + ": " + a.getDescricao() + ", Providência:" + a.getProvidencias());
 	    	estatisticas.AtualizarMetrica(atendimento.getTimestampChegada(), a.getChave(), a.getDuracaoAtendimento());
 	    }
 	    System.out.println("");

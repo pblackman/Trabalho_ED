@@ -1,4 +1,4 @@
-package Trabalho_2018;
+package trabalho_ed;
 
 public class ListaEstatica {
 
