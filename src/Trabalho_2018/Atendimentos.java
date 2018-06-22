@@ -16,7 +16,7 @@ public class Atendimentos extends MaxHeap {
 
 	public void Recepcionar(Atendimento atendimento) {
 		atendimento.setTimestampChegada();
-		System.out.println(atendimento.getPrioridade());
+		System.out.println("Cliente tem prioridade " + atendimento.getPrioridade());
 		this.insert(atendimento.getPrioridade(), atendimento);
 	}
 	
