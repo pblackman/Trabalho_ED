@@ -8,7 +8,7 @@ public class Assuntos extends ListaEstatica {
 	}
 	
     public boolean Inserir(Object e) {
-        if (tamanho() + 1 <= tamanho) {
+        if (this.getTamanho() + 1 <= tamanho) {
         	Assunto ass = (Assunto)e;
         	this.sumUrgencias += ass.getTipoAssunto().getUrgencia();
             ((Object[]) this.lista)[indice++] = e;

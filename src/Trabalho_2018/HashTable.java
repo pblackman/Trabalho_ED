@@ -13,7 +13,7 @@ public class HashTable {
 
     private int hash(String chave) {
         ByteBuffer wrapped = ByteBuffer.wrap(chave.getBytes());
-        return wrapped.getInt() % (lista.tamanho());
+        return wrapped.getInt() % (lista.tamanho);
     }
 
     public ObjetoBase Buscar(String chave) {

@@ -2,6 +2,8 @@ package Trabalho_2018;
 
 public class Atendimentos extends MaxHeap {
 	TiposAssuntos tiposAssuntos;
+	Estatisticas estatisticas = new Estatisticas(20);
+	
 	public Atendimentos(int maxsize) {
 		super(maxsize);
 		tiposAssuntos = new TiposAssuntos(System.getProperty("user.dir") + "\\data\\TipoAssunto.txt");
@@ -26,9 +28,29 @@ public class Atendimentos extends MaxHeap {
 		
 	}
 	
-	public void GerarEstatisticas() {
-		
-		
+	public void Encerrar(Atendimento atendimento) {
+		System.out.println("");
+		System.out.println("Encerrando atendimento para cliente nome:'" + atendimento.getCliente().getNome() +  
+				"', idade: " + atendimento.getCliente().getIdade() + ", prioridade: " + atendimento.getPrioridade());
+	    for(int i = 0; i< atendimento.getAssuntosTratados().getTamanho(); i++) {
+	    	Assunto a = (Assunto)atendimento.getAssuntosTratados().get(i);
+	    	System.out.println("Descrição Assunto " + i + ": " + a.getDescricao() + ", Providência:" + a.getProvidencias());
+	    	estatisticas.AtualizarMetrica(atendimento.getTimestampChegada(), a.getChave(), a.getDuracaoAtendimento());
+	    }
+	    System.out.println("");
+	    //Define timestamp de encerramento
+	    
+	    atendimento.setTimestampEncerramento();
 	}
+	
+	public void GerarEstatisticas() {
+		estatisticas.GerarEstatisticas();
+	}
+	
+	private String retornaStringData(Date data) {
+	    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
+	    String strDate = sdfDate.format(data);
+	    return strDate;
+}
 
 }

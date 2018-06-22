@@ -25,6 +25,10 @@ public class Assunto extends ObjetoBase {
         return this;
     }
      
+    public String getDescricao() {
+        return this.descricao;
+    }
+    
 	public String getProvidencias() {
 		return providencias;
 	}
