@@ -1,76 +1,87 @@
 package trabalho_ed;
 
-public class main_trabalho {
+import java.util.Random;
 
+public class main_trabalho {
 	
 	public static void main(String[] args) {
 
+		Random rand = new Random();
+		
 		Atendimentos Atendimentos = new Atendimentos(100);
 		
+		/*Simulando recepcionamento cliente 1*/
 		Cliente cliente1 = new Cliente("cpf1", "Ana", 52);
 		Atendimento atendimentoCliente1 = new Atendimento(cliente1);
-		TipoAssunto tp1 = (TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("BOLETO");
-		atendimentoCliente1.IncluirAssunto(tp1, "Cobrança feita em duplicidade.");
-		atendimentoCliente1.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("CANCELAMENTO"), "Cancelar todos os serviços.");
+		atendimentoCliente1.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("BOLETO"), "Cobranï¿½a feita em duplicidade.");
+		atendimentoCliente1.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("CANCELAMENTO"), "Cancelar todos os serviï¿½os.");
+		Atendimentos.Recepcionar(atendimentoCliente1);
 		
-		
+		/*Simulando recepcionamento cliente 2*/
 		Cliente cliente2 = new Cliente("cpf2", "Joaquim", 85);
 		Atendimento atendimentoCliente2 = new Atendimento(cliente2);
 		atendimentoCliente2.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("BOLETO"), "Solicita segunda via de boleto.");
-
+		Atendimentos.Recepcionar(atendimentoCliente2);
 	    
+		/*Simulando recepcionamento cliente 3*/
 		Cliente cliente3 = new Cliente("cpf3", "Paulo", 72);
 		Atendimento atendimentoCliente3 = new Atendimento(cliente3);
 		atendimentoCliente3.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("BOLETO"), "Solicita segunda via de boleto.");
-	    Atendimentos.Recepcionar(atendimentoCliente1);
-	    Atendimentos.Recepcionar(atendimentoCliente2);
+		atendimentoCliente3.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("VELOCIDADE"), "Internet muito lenta.");
 	    Atendimentos.Recepcionar(atendimentoCliente3);
 	    
+	    /*pegando o prï¿½ximo */
 	    Atendimento proximoAtendimento = Atendimentos.Atender();
-		Assuntos assuntos = proximoAtendimento.getAssuntosTratados(); // conjunto de assuntos do atendimento
-		for ( int i = 0; i < assuntos.indice; i++ ){
-        	Assunto ass = (Assunto)assuntos.lista[i];
-			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getChave());
-			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getTitulo());
-			ass.setTimestampAtendimentoAssunto(); // inicio do atendimento do assunto
-			System.out.println("   ---> Data de início do atendimento do assunto: " + ass.getTimestampAtendimentoAssunto());
-			ass.setTimestampEncerramentoAssunto(); // fim do atendimento do assunto
-			System.out.println("   ---> Data do fim    do atendimento do assunto: " + ass.getTimestampEncerramentoAssunto());
-			// atualizando variaveis para estatisticas do tipo de assunto
-			ass.getTipoAssunto().setTotalAtendimentos();
-			ass.getTipoAssunto().setTotalMinutosAtendimento(ass.getTimestampEncerramentoAssunto()-ass.getTimestampAtendimentoAssunto());
-		}
-
-		Atendimento proximoAtendimento2 = Atendimentos.Atender();
-		assuntos = proximoAtendimento.getAssuntosTratados(); // conjunto de assuntos do atendimento
-		for ( int i = 0; i < assuntos.indice; i++ ){
-        	Assunto ass = (Assunto)assuntos.lista[i];
-			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getChave());
-			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getTitulo());
-			ass.setTimestampAtendimentoAssunto(); // inicio do atendimento do assunto
-			System.out.println("   ---> Data de início do atendimento do assunto: " + ass.getTimestampAtendimentoAssunto());
-			ass.setTimestampEncerramentoAssunto(); // fim do atendimento do assunto
-			System.out.println("   ---> Data do fim    do atendimento do assunto: " + ass.getTimestampEncerramentoAssunto());
-			// atualizando variaveis para estatisticas do tipo de assunto
-			ass.getTipoAssunto().setTotalAtendimentos();
-			ass.getTipoAssunto().setTotalMinutosAtendimento(ass.getTimestampEncerramentoAssunto()-ass.getTimestampAtendimentoAssunto());
-		}
-
-		Atendimento proximoAtendimento3 = Atendimentos.Atender();
-		assuntos = proximoAtendimento.getAssuntosTratados(); // conjunto de assuntos do atendimento
-		for ( int i = 0; i < assuntos.indice; i++ ){
-        	Assunto ass = (Assunto)assuntos.lista[i];
-			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getChave());
-			System.out.println("   ---> Assunto: " + ass.getTipoAssunto().getTitulo());
-			ass.setTimestampAtendimentoAssunto(); // inicio do atendimento do assunto
-			System.out.println("   ---> Data de início do atendimento do assunto: " + ass.getTimestampAtendimentoAssunto());
-			ass.setTimestampEncerramentoAssunto(); // fim do atendimento do assunto
-			System.out.println("   ---> Data do fim    do atendimento do assunto: " + ass.getTimestampEncerramentoAssunto());
-			// atualizando variaveis para estatisticas do tipo de assunto
-			ass.getTipoAssunto().setTotalAtendimentos();
-			ass.getTipoAssunto().setTotalMinutosAtendimento(ass.getTimestampEncerramentoAssunto()-ass.getTimestampAtendimentoAssunto());
-		}
 	    
+	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
+	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
+	    	/*Busca Assunto a ser tratado*/
+	    	Assunto a = (Assunto)proximoAtendimento.getAssuntosTratados().get(i);
+	    	/*Random usado para definir um tempo aleatï¿½rio de atendimento*/
+	    	int randomTime = rand.nextInt((20 - 10) + 1) + 10; // ((Max - Min) + 1) - Min
+	    	/* informa duraï¿½ï¿½o do atendimento para o assunto e providï¿½ncia tomada*/
+	    	a.setDuracaoAtendimento(randomTime);
+	    	a.setProvidencias("Providï¿½ncia_" + Integer.toString(randomTime) );
+	    }
+	    
+	    /*Encerrando atendimento*/
+	    Atendimentos.Encerrar(proximoAtendimento);
+	    
+	    /*pegando o prï¿½ximo */
+	    proximoAtendimento = Atendimentos.Atender();
+	    
+	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
+	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
+	    	/*Busca Assunto a ser tratado*/
+	    	Assunto a = (Assunto)proximoAtendimento.getAssuntosTratados().get(i);
+	    	/*Random usado para definir um tempo aleatï¿½rio de atendimento*/
+	    	int randomTime = rand.nextInt((20 - 10) + 1) + 10; // ((Max - Min) + 1) - Min
+	    	/* informa duraï¿½ï¿½o do atendimento para o assunto e providï¿½ncia tomada*/
+	    	a.setDuracaoAtendimento(randomTime);
+	    	a.setProvidencias("Providï¿½ncia_" + Integer.toString(randomTime) );
+	    }
+	    
+	    /*Encerrando atendimento*/
+	    Atendimentos.Encerrar(proximoAtendimento);
+	    
+	    /*pegando o prï¿½ximo */
+	    proximoAtendimento = Atendimentos.Atender();
+	    
+	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
+	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
+	    	/*Busca Assunto a ser tratado*/
+	    	Assunto a = (Assunto)proximoAtendimento.getAssuntosTratados().get(i);
+	    	/*Random usado para definir um tempo aleatï¿½rio de atendimento*/
+	    	int randomTime = rand.nextInt((20 - 10) + 1) + 10; // ((Max - Min) + 1) - Min
+	    	/* informa duraï¿½ï¿½o do atendimento para o assunto e providï¿½ncia tomada*/
+	    	a.setDuracaoAtendimento(randomTime);
+	    	a.setProvidencias("Providï¿½ncia_" + Integer.toString(randomTime) );
+	    }
+	    
+	    /*Encerrando atendimento*/
+	    Atendimentos.Encerrar(proximoAtendimento);
+
+	    Atendimentos.GerarEstatisticas();
 	    
 	}
 }

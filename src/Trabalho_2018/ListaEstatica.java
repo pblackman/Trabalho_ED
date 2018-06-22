@@ -15,16 +15,16 @@ public class ListaEstatica {
         this.lista = new Object[tamanho];
     }
 
-    public int tamanho() {
-        return indice;
+    public int getTamanho() {
+        return this.indice;
     }
 
     public boolean vazia() {
-        return tamanho() == 0;
+        return this.indice == 0;
     }
 
     public boolean Inserir(Object e) {
-        if (tamanho() + 1 <= tamanho) {
+        if (getTamanho() + 1 <= tamanho) {
             ((Object[]) this.lista)[indice++] = e;
             return true;
         }

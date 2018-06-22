@@ -9,6 +9,7 @@ public class Cliente {
 		this.cpf = cpf;
 		this.nome=nome;
 		this.setIdade(idade);
+		System.out.println("Novo cliente - nome:'" + this.nome + "', cpf:'" + this.cpf + "', idade:" + this.idade);
 	}
 	
 

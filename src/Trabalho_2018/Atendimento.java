@@ -28,11 +28,19 @@ public class Atendimento {
 		return this.cliente;
 	}
 	
+	public Assuntos getAssuntosTratados() {
+		return this.assuntosTratados;
+	}
+	
 	public void IncluirAssunto(TipoAssunto tipo, String descricao){
 	    Assunto assunto = new Assunto(tipo, descricao);
 		this.assuntosTratados.Inserir(assunto);
 	}
 
+	public Date getTimestampChegada() {
+		return this.timestampChegada;
+	}
+	
 	public void setTimestampChegada() {
 		this.timestampChegada = new Date();
 	}
