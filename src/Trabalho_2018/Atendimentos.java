@@ -1,5 +1,7 @@
 package Trabalho_2018;
 
+import javax.naming.LimitExceededException;
+
 public class Atendimentos extends MaxHeap {
 	TiposAssuntos tiposAssuntos;
 	Estatisticas estatisticas = new Estatisticas(20);
@@ -14,14 +16,20 @@ public class Atendimentos extends MaxHeap {
 		return this.tiposAssuntos;
 	}
 
-	public void Recepcionar(Atendimento atendimento) {
+	public void Recepcionar(Atendimento atendimento)  {
 		atendimento.setTimestampChegada();
 		System.out.println("Cliente tem prioridade " + atendimento.getPrioridade());
-		this.insert(atendimento.getPrioridade(), atendimento);
+		
+		try {
+			this.insert(atendimento.getPrioridade(), atendimento);	
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 	
 	public Atendimento Atender() {
-		Atendimento atendimento = (Atendimento)this.remove().getItem();
+		Atendimento atendimento = (Atendimento)this.remover().getItem();
 		atendimento.setTimestampAtendimento();
 		System.out.println("Próximo cliente-> Nome: " + atendimento.getCliente().getNome() + ", idade: "  + atendimento.getCliente().getIdade());
 		return atendimento;

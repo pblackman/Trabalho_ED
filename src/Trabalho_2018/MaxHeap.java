@@ -1,14 +1,21 @@
 package Trabalho_2018;
 
+import javax.naming.LimitExceededException;
+
 public class MaxHeap
 {
 	
     private HeapItem[] Heap;
-    private int size;
+    private int n;
     private int maxsize;
-
-    private static final int FRONT = 1;
  
+    public MaxHeap(int maxsize)
+    {
+        this.maxsize = maxsize;
+        this.n = 0;
+        Heap = new HeapItem[this.maxsize + 1];
+    }
+    
     public class HeapItem {
     	private float prioridade;
     	private Object item;
@@ -29,79 +36,57 @@ public class MaxHeap
     	}
     }
     
-    public MaxHeap(int maxsize)
-    {
-        this.maxsize = maxsize;
-        this.size = 0;
-        Heap = new HeapItem[this.maxsize + 1];
-    }
- 
-    private int parent(int pos)
-    {
-        return pos / 2;
-    }
- 
-    private int leftChild(int pos)
-    {
-        return (2 * pos);
-    }
- 
-    private int rightChild(int pos)
-    {
-        return (2 * pos) + 1;
-    }
- 
-    private boolean isLeaf(int pos)
-    {
-        if (pos >=  (size / 2)  &&  pos <= size)
-        {
-            return true;
-        }
-        return false;
-    }
- 
-    private void swap(int fpos,int spos)
+    private void trocar(int i,int j)
     {
     	HeapItem tmp;
-        tmp = Heap[fpos];
-        Heap[fpos] = Heap[spos];
-        Heap[spos] = tmp;
+        tmp = Heap[i];
+        Heap[i] = Heap[j];
+        Heap[j] = tmp;
     }
- 
-    private void maxHeapify(int pos)
-    {
-        if (!isLeaf(pos))
-        { 
-            if ( Heap[leftChild(pos)]!= null && Heap[pos].getPrioridade() < Heap[leftChild(pos)].getPrioridade()   || Heap[rightChild(pos)] != null && Heap[pos].getPrioridade()  < Heap[rightChild(pos)].getPrioridade() )
-            {
-                if (Heap[leftChild(pos)].getPrioridade()  > Heap[rightChild(pos)].getPrioridade() )
-                {
-                    swap(pos, leftChild(pos));
-                    maxHeapify(leftChild(pos));
-                }else
-                {
-                    swap(pos, rightChild(pos));
-                    maxHeapify(rightChild(pos));
-                }
-            }
+    
+    private void descer(int i) {
+    	int j = 2 * i + 1;
+        if (j < n) {
+            if (j < n - 1) {
+    			if(Heap[j + 1].getPrioridade()  > Heap[j].getPrioridade()) {
+    				j++;
+    			}
+    		}
+    		if(Heap[i].getPrioridade() < Heap[j].getPrioridade()) {
+    			trocar(i, j);
+    			descer(i);
+    		}
+    	}
+    }
+    
+    private void subir(int i) {
+        int j = (i - 1) / 2;
+        if (Heap[i].prioridade > Heap[j].prioridade) {
+            trocar(i, j);
+            subir(j);
         }
     }
  
-    public void insert(float f, Object objeto)
-    {
-    	HeapItem item = new HeapItem(f, objeto);
-        Heap[++size] = item;
-        int current = size;
-        while(Heap[parent(current)] != null && (Heap[current].getPrioridade()  > Heap[parent(current)].getPrioridade()) )
-        {
-            swap(current,parent(current));
-            current = parent(current);
-        }	
+    private void arranjar() {
+    	for(int i = n/2 - 1; i >= 0; i-- ) {
+    		descer(i);
+    	}
+    }
+ 
+    public void insert(float f, Object objeto) throws Exception {
+        
+        if (n < Heap.length - 1) {
+        	Heap[n++] = new HeapItem(f, objeto);
+            //subir(n - 1);
+            arranjar();
+        } else
+            throw new Exception("Overflow");
+        
     }
  
     public void print()
     {
-        for (int i = 1; i <= size / 2; i++ )
+        for (int i = 1; i <= n / 2; i++ )
         {
             System.out.print(" PARENT : " + Heap[i] + " LEFT CHILD : " + Heap[2*i]
                   + " RIGHT CHILD :" + Heap[2 * i  + 1]);
@@ -109,20 +94,14 @@ public class MaxHeap
         }
     }
  
-    public void maxHeap()
+    public HeapItem remover()
     {
-        for (int pos = (size / 2); pos >= 1; pos--)
-        {
-            maxHeapify(pos);
-        }
-    }
- 
-    public HeapItem remove()
-    {
-        HeapItem popped = Heap[FRONT];
-        Heap[FRONT] = Heap[size--]; 
-        maxHeapify(FRONT);
-        return popped;
+    	arranjar();
+        HeapItem item = Heap[0];
+        Heap[0] = Heap[--n];
+        Heap[n] = null;
+        descer(0);
+        return item;
     }
  
 }
