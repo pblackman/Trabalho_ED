@@ -3,7 +3,6 @@ package Trabalho_2018;
 import java.util.Random;
 
 public class main_trabalho {
-
 	
 	public static void main(String[] args) {
 
@@ -32,7 +31,7 @@ public class main_trabalho {
 	    Atendimentos.Recepcionar(atendimentoCliente3);
 	    
 	    /*pegando o próximo */
-	    proximoAtendimento = Atendimentos.Atender();
+	    Atendimento proximoAtendimento = Atendimentos.Atender();
 	    
 	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
 	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
