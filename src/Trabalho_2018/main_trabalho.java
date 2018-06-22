@@ -11,17 +11,20 @@ public class main_trabalho {
 		
 		Atendimentos Atendimentos = new Atendimentos(100);
 		
+		/*Simulando recepcionamento cliente 1*/
 		Cliente cliente1 = new Cliente("cpf1", "Ana", 52);
 		Atendimento atendimentoCliente1 = new Atendimento(cliente1);
 		atendimentoCliente1.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("BOLETO"), "Cobrança feita em duplicidade.");
 		atendimentoCliente1.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("CANCELAMENTO"), "Cancelar todos os serviços.");
 		Atendimentos.Recepcionar(atendimentoCliente1);
 		
+		/*Simulando recepcionamento cliente 2*/
 		Cliente cliente2 = new Cliente("cpf2", "Joaquim", 85);
 		Atendimento atendimentoCliente2 = new Atendimento(cliente2);
 		atendimentoCliente2.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("BOLETO"), "Solicita segunda via de boleto.");
 		Atendimentos.Recepcionar(atendimentoCliente2);
 	    
+		/*Simulando recepcionamento cliente 3*/
 		Cliente cliente3 = new Cliente("cpf3", "Paulo", 72);
 		Atendimento atendimentoCliente3 = new Atendimento(cliente3);
 		atendimentoCliente3.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("BOLETO"), "Solicita segunda via de boleto.");
