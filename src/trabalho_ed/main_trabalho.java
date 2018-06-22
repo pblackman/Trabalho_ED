@@ -58,7 +58,7 @@ public class main_trabalho {
 	    	int randomTime = rand.nextInt((20 - 10) + 1) + 10; // ((Max - Min) + 1) - Min
 	    	/* informa duração do atendimento para o assunto e providência tomada*/
 	    	a.setDuracaoAtendimento(randomTime);
-	    	a.setProvidencias("Providï¿½ncia_" + Integer.toString(randomTime) );
+	    	a.setProvidencias("Providência_" + Integer.toString(randomTime) );
 	    }
 	    
 	    /*Encerrando atendimento*/
