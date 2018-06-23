@@ -1,7 +1,5 @@
 package trabalho_ed;
 
-import javax.naming.LimitExceededException;
-
 //maxheap
 public class MaxHeap
 {
