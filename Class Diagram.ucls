@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="trabalho_ed.ObjetoBase" project="Trabalho" 
     file="/Trabalho/src/trabalho_ed/ObjetoBase.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="443" y="627"/>    
+    <position height="-1" width="-1" x="425" y="1127"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="trabalho_ed.Atendimento" project="Trabalho" 
     file="/Trabalho/src/trabalho_ed/Atendimento.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="708" y="868"/>    
+    <position height="-1" width="-1" x="588" y="710"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="trabalho_ed.Estatisticas.Metrica" project="Trabalho" 
     file="/Trabalho/src/trabalho_ed/Estatisticas.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="474" y="804"/>    
+    <position height="-1" width="-1" x="782" y="1173"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="trabalho_ed.Assunto" project="Trabalho" 
     file="/Trabalho/src/trabalho_ed/Assunto.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="109" y="1155"/>    
+    <position height="-1" width="-1" x="141" y="1094"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="trabalho_ed.ListaEncadeada.No" project="Trabalho" 
     file="/Trabalho/src/trabalho_ed/ListaEncadeada.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="274" y="381"/>    
+    <position height="-1" width="-1" x="302" y="361"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="trabalho_ed.Cliente" project="Trabalho" 
     file="/Trabalho/src/trabalho_ed/Cliente.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="949" y="860"/>    
+    <position height="-1" width="-1" x="613" y="993"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
   </class>  
   <class id="17" language="java" name="trabalho_ed.MaxHeap.HeapItem" project="Trabalho" 
     file="/Trabalho/src/trabalho_ed/MaxHeap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1195" y="814"/>    
+    <position height="-1" width="-1" x="1176" y="769"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
