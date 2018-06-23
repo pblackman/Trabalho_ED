@@ -4,32 +4,15 @@ import java.nio.ByteBuffer;
 import java.util.Date;
 
 public class Assunto extends ObjetoBase {
-	
+	/* Classe que representa um Assunto tratado durante um Atendimento a um Cliente
+     * Implementada conforme especificação do trabalho
+	 * (Assunto {tipo, descrição, providências, duraçãoAtendimento})
+     */
      private TipoAssunto tipo;
      private String descricao;
      private String providencias = null;
      private int duracaoAtendimento = 0;
- 	private long timestampAtendimentoAssunto;
- 	private long timestampEncerramentoAssunto;
     
-     public long getTimestampAtendimentoAssunto() {
-    	//Date dt = new Date (timestampAtendimentoAssunto);
-		return timestampAtendimentoAssunto;
-	}
-
-	public void setTimestampAtendimentoAssunto() {
-		this.timestampAtendimentoAssunto = System.currentTimeMillis();//new Date();
-	}
-
-	public long getTimestampEncerramentoAssunto() {
-		//Date dt = new Date (timestampEncerramentoAssunto);
-		return timestampEncerramentoAssunto;
-	}
-
-	public void setTimestampEncerramentoAssunto() {
-		this.timestampEncerramentoAssunto = System.currentTimeMillis();
-	}
-
 	public Assunto(TipoAssunto tipo, String descricao){
     	 this.tipo = tipo;
     	 this.descricao = descricao;
@@ -57,7 +40,7 @@ public class Assunto extends ObjetoBase {
     public Integer getHash() {
         String chave = this.tipo.getChave();
         ByteBuffer wrapped = ByteBuffer.wrap(chave.getBytes());
-        return null;//wrapped.getInt();  //retornei null, porque estava dando erro
+        return wrapped.getInt();
     }
 
 	public void setProvidencias(String providencias) {

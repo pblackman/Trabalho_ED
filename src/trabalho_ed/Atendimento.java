@@ -3,6 +3,10 @@ package trabalho_ed;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+/* Classe Atendimento representa um Atendimento a um Cliente para tratar uma coleção de Assuntos
+ * Um objeto da classe Atendimento é colocado na fila de Atendimentos de acordo com sua prioridade
+ * */
+
 public class Atendimento {
 
 	private Cliente cliente;
@@ -10,14 +14,13 @@ public class Atendimento {
 	private Date timestampChegada;
 	private Date timestampAtendimento;
 	private Date timestampEncerramento;
-	private float prioridade;
-	private int numAssuntos;
 	
 	public Atendimento(Cliente cliente) {
 		this.assuntosTratados = new Assuntos(10);
 		this.cliente = cliente;
 	}
 	
+	//Calcula a prioridade em função da idade, tempo de espera e média das urgências dos assuntos tratados
 	public float getPrioridade() {
 		Date timestamp = new Date();
 		long espera = (timestamp.getTime() - this.timestampChegada.getTime())/(1000*60);

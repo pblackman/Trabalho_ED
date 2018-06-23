@@ -65,8 +65,8 @@ public class MaxHeap
             subir(j);
         }
     }
- 
-    private void arranjar() {
+    //Reorganiza o heap em tempo linear - O(n)
+    public void arranjar() {
     	for(int i = n/2 - 1; i >= 0; i-- ) {
     		descer(i);
     	}
@@ -95,7 +95,6 @@ public class MaxHeap
  
     public HeapItem remover()
     {
-    	arranjar();
         HeapItem item = Heap[0];
         Heap[0] = Heap[--n];
         Heap[n] = null;

@@ -3,6 +3,14 @@ package trabalho_ed;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import trabalho_ed.MaxHeap.HeapItem;
+
+/* A classe Atendimentos representa a fila de Atendimentos enfileirados por prioridade.
+ * Herda de MaxHeap, mas tem uma implementação específica do método remover, que solicita reorganização do heap antes da remoção de um item.
+ * Esta reorganização é necessária p/ que eventuais mudanças de prioridade em função do tempo possam ser contabilizadas.
+ * */
+
+
 public class Atendimentos extends MaxHeap {
 	TiposAssuntos tiposAssuntos;
 	Estatisticas estatisticas = new Estatisticas(20);
@@ -46,9 +54,15 @@ public class Atendimentos extends MaxHeap {
 	    	estatisticas.AtualizarMetrica(atendimento.getTimestampChegada(), a.getChave(), a.getDuracaoAtendimento());
 	    }
 	    System.out.println("");
+
 	    //Define timestamp de encerramento
-	    
 	    atendimento.setTimestampEncerramento();
+	}
+	
+	//Função de remoção do heap que solicita rearranjo antes
+	public HeapItem remover() {
+		super.arranjar();
+		return super.remover();
 	}
 	
 	public void GerarEstatisticas() {

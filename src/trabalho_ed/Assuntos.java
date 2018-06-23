@@ -1,5 +1,13 @@
 package trabalho_ed;
 
+
+
+/*  A classe Assuntos representa uma coleção de Assuntos tratados durante um Atendimento a um Cliente
+ *  Herda de ListaEstatica.
+ *  Optamos por uma Lista Estatica pois durante um atendimento cada Assunto precisa ser acessado de forma linear para ter a providência
+ *  e a duração do atendimento informados.
+ *  */
+
 public class Assuntos extends ListaEstatica {
 	private int sumUrgencias;
 	public Assuntos(int tamanho) {
