@@ -72,7 +72,7 @@ public class MaxHeap
     	}
     }
  
-    public void insert(float f, Object objeto) throws Exception {
+    public void inserir(float f, Object objeto) throws Exception {
         
         if (n < Heap.length - 1) {
         	Heap[n++] = new HeapItem(f, objeto);

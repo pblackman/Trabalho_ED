@@ -13,11 +13,12 @@ import trabalho_ed.MaxHeap.HeapItem;
 
 public class Atendimentos extends MaxHeap {
 	TiposAssuntos tiposAssuntos;
-	Estatisticas estatisticas = new Estatisticas(20);
+	Estatisticas estatisticas;
 	
-	public Atendimentos(int maxsize) {
+	public Atendimentos(int maxsize, Estatisticas estatisticas) {
 		super(maxsize);
-		tiposAssuntos = new TiposAssuntos(System.getProperty("user.dir") + "\\data\\TipoAssunto.txt");
+		this.estatisticas = estatisticas;
+		this.tiposAssuntos = new TiposAssuntos(System.getProperty("user.dir") + "\\data\\TipoAssunto.txt");
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -30,7 +31,7 @@ public class Atendimentos extends MaxHeap {
 		System.out.println("Cliente tem prioridade " + atendimento.getPrioridade());
 		
 		try {
-			this.insert(atendimento.getPrioridade(), atendimento);	
+			this.inserir(atendimento.getPrioridade(), atendimento);	
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -48,10 +49,16 @@ public class Atendimentos extends MaxHeap {
 		System.out.println("");
 		System.out.println("Encerrando atendimento para cliente nome:'" + atendimento.getCliente().getNome() +  
 				"', idade: " + atendimento.getCliente().getIdade() + ", prioridade: " + atendimento.getPrioridade());
-	    for(int i = 0; i< atendimento.getAssuntosTratados().getTamanho(); i++) {
+	    
+		//Busca o objeto Estatística do dia
+		EstatisticaDia estatDia = this.estatisticas.Buscar(atendimento.getTimestampChegada());
+		
+		for(int i = 0; i< atendimento.getAssuntosTratados().getTamanho(); i++) {
 	    	Assunto a = (Assunto)atendimento.getAssuntosTratados().get(i);
 	    	System.out.println("Descrição Assunto " + i + ": " + a.getDescricao() + ", Providência:" + a.getProvidencias());
-	    	estatisticas.AtualizarMetrica(atendimento.getTimestampChegada(), a.getChave(), a.getDuracaoAtendimento());
+	    	
+	    	//atualiza as estatísticas
+	    	estatDia.getEstatistica().AtualizarMetrica(atendimento.getTimestampChegada(), a.getChave(), a.getDuracaoAtendimento());
 	    }
 	    System.out.println("");
 
@@ -64,15 +71,5 @@ public class Atendimentos extends MaxHeap {
 		super.arranjar();
 		return super.remover();
 	}
-	
-	public void GerarEstatisticas() {
-		estatisticas.GerarEstatisticas();
-	}
-	
-	private String retornaStringData(Date data) {
-	    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
-	    String strDate = sdfDate.format(data);
-	    return strDate;
-}
 
 }

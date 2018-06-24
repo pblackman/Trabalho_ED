@@ -1,5 +1,6 @@
 package trabalho_ed;
 
+import java.util.Date;
 import java.util.Random;
 
 public class main_trabalho {
@@ -8,7 +9,12 @@ public class main_trabalho {
 
 		Random rand = new Random();
 		
-		Atendimentos Atendimentos = new Atendimentos(100);
+		Estatisticas estatisticas = new Estatisticas(20);
+		Atendimentos Atendimentos = new Atendimentos(100, estatisticas);
+
+		Date hoje = new Date();
+		//Inicia um novo objeto estatística para o dia que se inicia
+		estatisticas.IncluirEstatisticaDiaria(hoje);
 		
 		/*Simulando recepcionamento cliente 1*/
 		Cliente cliente1 = new Cliente("cpf1", "Ana", 52);
@@ -81,7 +87,8 @@ public class main_trabalho {
 	    /*Encerrando atendimento*/
 	    Atendimentos.Encerrar(proximoAtendimento);
 
-	    Atendimentos.GerarEstatisticas();
+	    /*Gerando estatísticas para o dia */
+	    estatisticas.GerarEstatistica(hoje);
 	    
 	}
 }
