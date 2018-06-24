@@ -36,8 +36,54 @@ public class main_trabalho {
 		atendimentoCliente3.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("VELOCIDADE"), "Internet muito lenta.");
 	    Atendimentos.Recepcionar(atendimentoCliente3);
 	    
-	    /*pegando o prï¿½ximo */
+		/*Simulando recepcionamento cliente 4*/
+		Cliente cliente4 = new Cliente("cpf4", "Juvenal", 20);
+		Atendimento atendimentoCliente4 = new Atendimento(cliente4);
+		atendimentoCliente4.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("SENHA"), "Esqueceu senha de acesso.");
+		Atendimentos.Recepcionar(atendimentoCliente4);
+		
+		/*Simulando recepcionamento cliente 4*/
+		Cliente cliente5 = new Cliente("cpf5", "Bia", 20);
+		Atendimento atendimentoCliente5 = new Atendimento(cliente5);
+		atendimentoCliente5.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("CANCELAMENTO"), "Cobrança indevida. Quer cancelar o serviço.");
+		Atendimentos.Recepcionar(atendimentoCliente5);
+	    
+	    /*pegando o próximo */
 	    Atendimento proximoAtendimento = Atendimentos.Atender();
+	    
+	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
+	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
+	    	/*Busca Assunto a ser tratado*/
+	    	Assunto a = (Assunto)proximoAtendimento.getAssuntosTratados().get(i);
+	    	/*Random usado para definir um tempo aleatório de atendimento*/
+	    	int randomTime = rand.nextInt((20 - 10) + 1) + 10; // ((Max - Min) + 1) - Min
+	    	/* informa duração do atendimento para o assunto e providência tomada*/
+	    	a.setDuracaoAtendimento(randomTime);
+	    	a.setProvidencias("Providência_" + Integer.toString(randomTime) );
+	    }
+	    
+	    /*Encerrando atendimento*/
+	    Atendimentos.Encerrar(proximoAtendimento);
+	    
+	    /*pegando o próximo */
+	    proximoAtendimento = Atendimentos.Atender();
+	    
+	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
+	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
+	    	/*Busca Assunto a ser tratado*/
+	    	Assunto a = (Assunto)proximoAtendimento.getAssuntosTratados().get(i);
+	    	/*Random usado para definir um tempo aleatório de atendimento*/
+	    	int randomTime = rand.nextInt((20 - 10) + 1) + 10; // ((Max - Min) + 1) - Min
+	    	/* informa duração do atendimento para o assunto e providência tomada*/
+	    	a.setDuracaoAtendimento(randomTime);
+	    	a.setProvidencias("Providência_" + Integer.toString(randomTime) );
+	    }
+	    
+	    /*Encerrando atendimento*/
+	    Atendimentos.Encerrar(proximoAtendimento);
+	    
+	    /*pegando o próximo */
+	    proximoAtendimento = Atendimentos.Atender();
 	    
 	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
 	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
