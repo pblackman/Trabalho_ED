@@ -9,7 +9,7 @@ public class main_trabalho {
 
 		Random rand = new Random();
 		
-		Estatisticas estatisticas = new Estatisticas(20);
+		Estatisticas estatisticas = new Estatisticas(365);
 		Atendimentos Atendimentos = new Atendimentos(100, estatisticas);
 
 		Date hoje = new Date();
