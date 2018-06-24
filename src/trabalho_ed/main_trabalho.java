@@ -13,7 +13,7 @@ public class main_trabalho {
 		Atendimentos Atendimentos = new Atendimentos(100, estatisticas);
 
 		Date hoje = new Date();
-		//Inicia um novo objeto estatística para o dia que se inicia
+		//Inicia um novo objeto estatística para o dia que começa
 		estatisticas.IncluirEstatisticaDiaria(hoje);
 		
 		/*Simulando recepcionamento cliente 1*/
