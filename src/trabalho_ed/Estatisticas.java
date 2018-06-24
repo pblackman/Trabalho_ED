@@ -14,7 +14,7 @@ public class Estatisticas extends HashTable{
 	public EstatisticaDia Buscar(Date data) {
 		
 		String strData = retornaStringData(data);
-		return (EstatisticaDia)super.Buscar(strData);
+		return (EstatisticaDia)this.Buscar(strData);
 				
 	}
 	

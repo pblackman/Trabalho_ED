@@ -13,14 +13,14 @@ public class TiposAssuntos extends HashTable {
 	public TiposAssuntos(String filePath) {
 		super(100);
 		try { 
-			LoadListFromFile(filePath);
+			CarregarDoArquivo(filePath);
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
 	
-	private void LoadListFromFile(String filePath) throws IOException {
+	private void CarregarDoArquivo(String filePath) throws IOException {
 	BufferedReader br = new BufferedReader(new FileReader(filePath));
 	try {
 	    String line = br.readLine();

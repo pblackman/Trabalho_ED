@@ -15,6 +15,7 @@ public class Assuntos extends ListaEstatica {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
     public boolean Inserir(Object e) {
         if (this.getTamanho() + 1 <= tamanho) {
         	Assunto ass = (Assunto)e;
