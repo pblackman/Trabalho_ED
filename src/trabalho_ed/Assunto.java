@@ -25,10 +25,6 @@ public class Assunto extends ObjetoBase {
 	     return this.tipo.getChave();
 	 }
 	 
-    public Object getConteudo() {  //Troquei para Objeto, porque estava dando erro
-        return this;
-    }
-     
     public String getDescricao() {
         return this.descricao;
     }

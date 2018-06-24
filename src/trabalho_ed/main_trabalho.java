@@ -7,13 +7,11 @@ public class main_trabalho {
 	
 	public static void main(String[] args) {
 
-		Random rand = new Random();
-		
 		Estatisticas estatisticas = new Estatisticas(365);
 		Atendimentos Atendimentos = new Atendimentos(100, estatisticas);
 
-		Date hoje = new Date();
 		//Inicia um novo objeto estatística para o dia que começa
+		Date hoje = new Date();
 		estatisticas.IncluirEstatisticaDiaria(hoje);
 		
 		/*Simulando recepcionamento cliente 1*/
@@ -51,6 +49,7 @@ public class main_trabalho {
 	    /*pegando o próximo */
 	    Atendimento proximoAtendimento = Atendimentos.Atender();
 	    
+		Random rand = new Random();
 	    /***  Simulando Atendente varrendo lista de assuntos e resolvendo um a um ***/
 	    for(int i =0; i< proximoAtendimento.getAssuntosTratados().getTamanho(); i++) {
 	    	/*Busca Assunto a ser tratado*/
