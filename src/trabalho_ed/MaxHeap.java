@@ -63,19 +63,8 @@ public class MaxHeap
         
     }
  
-    public void print()
-    {
-        for (int i = 1; i <= n / 2; i++ )
-        {
-            System.out.print(" PAI : " + Heap[i] + " FILHO ESQ: " + Heap[2*i]
-                  + " FILHO DIR:" + Heap[2 * i  + 1]);
-            System.out.println();
-        }
-    }
- 
     public Atendimento remover()
     {
-    	this.arranjar();
     	Atendimento item = Heap[0];
         Heap[0] = Heap[--n];
         Heap[n] = null;

@@ -38,7 +38,10 @@ public class Atendimentos  {
 	}
 	
 	public Atendimento Atender() {
-		Atendimento atendimento = this.remover();
+		//Reorganiza o heap por prioridades
+		this.fila.arranjar();
+		//Remove o próximo item do heap
+		Atendimento atendimento = this.fila.remover();
 		atendimento.setTimestampAtendimento();
 		System.out.println("Próximo cliente-> Nome: " + atendimento.getCliente().getNome() + ", idade: "  + atendimento.getCliente().getIdade());
 		return atendimento;
@@ -64,10 +67,4 @@ public class Atendimentos  {
 	    //Define timestamp de encerramento
 	    atendimento.setTimestampEncerramento();
 	}
-	
-	//Função de remoção do heap que solicita rearranjo antes
-	public Atendimento remover() {
-		return this.fila.remover();
-	}
-
 }
