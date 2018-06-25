@@ -56,8 +56,9 @@ public class MaxHeap
         
         if (n < Heap.length - 1) {
         	Heap[n++] = atendimento;
+        	//Reorganização do heap agora é feita na remoção
             //subir(n - 1);
-            arranjar();
+            //arranjar();
         } else
             throw new Exception("Overflow");
         
