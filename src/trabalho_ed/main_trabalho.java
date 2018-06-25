@@ -12,6 +12,8 @@ public class main_trabalho {
 
 		//Inicia um novo objeto estatística para o dia que começa
 		Date hoje = new Date();
+		
+		//Acesso para obter Estatisticas do dia corrente em O(1)
 		estatisticas.IncluirEstatisticaDiaria(hoje);
 		
 		/*Simulando recepcionamento cliente 1*/

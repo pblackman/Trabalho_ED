@@ -1,5 +1,11 @@
 package trabalho_ed;
 
+/*
+ * Classe EstatisticaDia é uma classe associada a classe Estatistica.
+ * Foi criada pois a classe Estatistica já estende HashTable, e não poderia também
+ * estender ObjetoBase para permitir o seu armazenamento também em uma HashTable.
+ * */
+
 public class EstatisticaDia extends ObjetoBase {
 	
 	private String data;

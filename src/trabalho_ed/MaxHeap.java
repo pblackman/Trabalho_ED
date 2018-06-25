@@ -45,26 +45,28 @@ public class MaxHeap
             subir(j);
         }
     }
+    
     //Reorganiza o heap em tempo linear - O(n)
     public void arranjar() {
     	for(int i = n/2 - 1; i >= 0; i-- ) {
     		descer(i);
     	}
     }
- 
+    
     public void inserir(Atendimento atendimento) throws Exception {
-        
         if (n < Heap.length - 1) {
         	Heap[n++] = atendimento;
         	//Reorganização do heap agora é feita na remoção
             //subir(n - 1);
         } else
             throw new Exception("Overflow");
-        
     }
  
     public Atendimento remover()
     {
+    	//Arranja o heap na remoção para garantir que eventuais mudanças de prioridade
+    	//sejam contabilizadas.
+    	this.arranjar();
     	Atendimento item = Heap[0];
         Heap[0] = Heap[--n];
         Heap[n] = null;

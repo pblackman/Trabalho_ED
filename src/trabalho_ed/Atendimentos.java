@@ -38,8 +38,6 @@ public class Atendimentos  {
 	}
 	
 	public Atendimento Atender() {
-		//Reorganiza o heap por prioridades
-		this.fila.arranjar();
 		//Remove o próximo item do heap
 		Atendimento atendimento = this.fila.remover();
 		atendimento.setTimestampAtendimento();

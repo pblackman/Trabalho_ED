@@ -1,10 +1,21 @@
 package trabalho_ed;
 
 import java.util.Date;
+/*
+ * Classe Estatistica armazena objetos da classe Metrica
+ * Uma Metrica contém um conjunto  de contatores para um tipo de assunto.
+ * O acesso a uma métrica de um tipo é feito em O(1)
+ * */
+
 
 public class Estatistica extends HashTable{
+	//Lista estática auxiliar que guarda os objetos mantidos no hashtable
+	// evitando que eu tenha que acessar elementos vazios quando quiser
+	// imprimir as estatísticas
+	
 	ListaEstatica lista;
 	
+	//Classe metrica guarda contadores para um tipo de assunto
 	protected class Metrica extends ObjetoBase{
 		private String Tipo;
 		private int quantidade;
@@ -35,8 +46,11 @@ public class Estatistica extends HashTable{
 	
 	public void AtualizarMetrica(Date dataChegada, String tipo, int tempoAtendimento) {
 		
-		//dataChegada ainda não é usada. Preciso criar uma coleção que guarde diferentes datas, para imprimir
-		// as estatísticas somente do dia corrente
+		/*
+		 * Busca em O(1) na hashtable, a métrica para o tipo requerido.
+		 * Se encontrar, atualiza os contadores.
+		 * Caso contrário, cria um novo objeto Metrica e insere no hash
+		 * */
 		
 		System.out.println("Atualizando métricas: tipo '" + tipo + ", Duração Atendimento: " + tempoAtendimento);
 		
