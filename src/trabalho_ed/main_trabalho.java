@@ -45,7 +45,7 @@ public class main_trabalho {
 		Atendimento atendimentoCliente5 = new Atendimento(cliente5);
 		atendimentoCliente5.IncluirAssunto((TipoAssunto)Atendimentos.getTiposAssuntos().Buscar("CANCELAMENTO"), "Cobrança indevida. Quer cancelar o serviço.");
 		Atendimentos.Recepcionar(atendimentoCliente5);
-	    
+		
 	    /*pegando o próximo */
 	    Atendimento proximoAtendimento = Atendimentos.Atender();
 	    

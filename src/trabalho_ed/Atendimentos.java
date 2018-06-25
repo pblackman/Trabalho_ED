@@ -39,7 +39,7 @@ public class Atendimentos extends MaxHeap {
 	}
 	
 	public Atendimento Atender() {
-		Atendimento atendimento = (Atendimento)this.remover().getItem();
+		Atendimento atendimento = (Atendimento)this.remover();
 		atendimento.setTimestampAtendimento();
 		System.out.println("Próximo cliente-> Nome: " + atendimento.getCliente().getNome() + ", idade: "  + atendimento.getCliente().getIdade());
 		return atendimento;
@@ -68,7 +68,7 @@ public class Atendimentos extends MaxHeap {
 	
 	//Função de remoção do heap que solicita rearranjo antes
 	@Override
-	public HeapItem remover() {
+	public ObjetoBase remover() {
 		super.arranjar();
 		return super.remover();
 	}
