@@ -58,7 +58,6 @@ public class MaxHeap
         	Heap[n++] = atendimento;
         	//Reorganização do heap agora é feita na remoção
             //subir(n - 1);
-            //arranjar();
         } else
             throw new Exception("Overflow");
         
