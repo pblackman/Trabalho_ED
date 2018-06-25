@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
  * Um objeto da classe Atendimento é colocado na fila de Atendimentos de acordo com sua prioridade
  * */
 
-public class Atendimento extends ObjetoBase{
+public class Atendimento {
 
 	private Cliente cliente;
 	private Assuntos assuntosTratados;
@@ -59,11 +59,5 @@ public class Atendimento extends ObjetoBase{
 	public Date GerarEstatistica(){
 		return null;
 	
-	}
-
-	@Override
-	public String getChave() {
-		// TODO Auto-generated method stub
-		return Float.toString(getPrioridade());
 	}
 }
