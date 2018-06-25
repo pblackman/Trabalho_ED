@@ -4,7 +4,7 @@ package trabalho_ed;
 public class MaxHeap
 {
 	
-    private HeapItem[] Heap;
+    private Atendimento[] Heap;
     private int n;
     private int maxsize;
  
@@ -12,32 +12,12 @@ public class MaxHeap
     {
         this.maxsize = maxsize;
         this.n = 0;
-        Heap = new HeapItem[this.maxsize + 1];
-    }
-    
-    public class HeapItem {
-    	private float prioridade;
-    	private Object item;
-    	
-    	public HeapItem(float prioridade, Object item) {
-    		this.prioridade = prioridade;
-    		this.item = item;
-    	}
-    	public void setPrioridade(float prioridade) {
-    		this.prioridade = prioridade;
-    	}
-    	public float getPrioridade() {
-    		return this.prioridade;
-    	}
-    	
-    	public Object getItem() {
-    		return this.item;
-    	}
+        Heap = new Atendimento[this.maxsize + 1];
     }
     
     private void trocar(int i,int j)
     {
-    	HeapItem tmp;
+    	Atendimento tmp;
         tmp = Heap[i];
         Heap[i] = Heap[j];
         Heap[j] = tmp;
@@ -60,7 +40,7 @@ public class MaxHeap
     
     private void subir(int i) {
         int j = (i - 1) / 2;
-        if (Heap[i].prioridade > Heap[j].prioridade) {
+        if (Heap[i].getPrioridade() > Heap[j].getPrioridade()) {
             trocar(i, j);
             subir(j);
         }
@@ -72,10 +52,10 @@ public class MaxHeap
     	}
     }
  
-    public void inserir(float f, Object objeto) throws Exception {
+    public void inserir(Atendimento atendimento) throws Exception {
         
         if (n < Heap.length - 1) {
-        	Heap[n++] = new HeapItem(f, objeto);
+        	Heap[n++] = atendimento;
             //subir(n - 1);
             arranjar();
         } else
@@ -93,9 +73,10 @@ public class MaxHeap
         }
     }
  
-    public HeapItem remover()
+    public Atendimento remover()
     {
-        HeapItem item = Heap[0];
+    	this.arranjar();
+    	Atendimento item = Heap[0];
         Heap[0] = Heap[--n];
         Heap[n] = null;
         descer(0);

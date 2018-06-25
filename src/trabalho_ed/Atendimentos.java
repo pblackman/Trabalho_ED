@@ -3,20 +3,19 @@ package trabalho_ed;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import trabalho_ed.MaxHeap.HeapItem;
-
 /* A classe Atendimentos representa a fila de Atendimentos enfileirados por prioridade.
  * Herda de MaxHeap, mas tem uma implementação específica do método remover, que solicita reorganização do heap antes da remoção de um item.
  * Esta reorganização é necessária p/ que eventuais mudanças de prioridade em função do tempo possam ser contabilizadas.
  * */
 
 
-public class Atendimentos extends MaxHeap {
+public class Atendimentos  {
 	TiposAssuntos tiposAssuntos;
 	Estatisticas estatisticas;
+	MaxHeap fila;
 	
 	public Atendimentos(int maxsize, Estatisticas estatisticas) {
-		super(maxsize);
+		this.fila = new MaxHeap(maxsize);
 		this.estatisticas = estatisticas;
 		this.tiposAssuntos = new TiposAssuntos(System.getProperty("user.dir") + "\\data\\TipoAssunto.txt");
 		// TODO Auto-generated constructor stub
@@ -31,7 +30,7 @@ public class Atendimentos extends MaxHeap {
 		System.out.println("Cliente tem prioridade " + atendimento.getPrioridade());
 		
 		try {
-			this.inserir(atendimento.getPrioridade(), atendimento);	
+			this.fila.inserir(atendimento);	
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -39,7 +38,7 @@ public class Atendimentos extends MaxHeap {
 	}
 	
 	public Atendimento Atender() {
-		Atendimento atendimento = (Atendimento)this.remover().getItem();
+		Atendimento atendimento = this.remover();
 		atendimento.setTimestampAtendimento();
 		System.out.println("Próximo cliente-> Nome: " + atendimento.getCliente().getNome() + ", idade: "  + atendimento.getCliente().getIdade());
 		return atendimento;
@@ -67,10 +66,8 @@ public class Atendimentos extends MaxHeap {
 	}
 	
 	//Função de remoção do heap que solicita rearranjo antes
-	@Override
-	public HeapItem remover() {
-		super.arranjar();
-		return super.remover();
+	public Atendimento remover() {
+		return this.fila.remover();
 	}
 
 }
